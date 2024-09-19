@@ -22,10 +22,10 @@ const Searchbar = () => {
     }, [query]);
 
     return (
-        <div className="w-full h-16 relative flex justify-end items-center px-4">
+        <div className="relative flex justify-end items-center px-4 ">
             <div className="w-64 border-b-2 border-zinc-400 min-w-56 duration-100 px-2">
                 <label htmlFor="search">
-                    <i className="text-zinc-300 ri-search-line text-xl"></i>
+                    <i className="text-zinc-200 ri-search-line text-xl"></i>
                 </label>
                 <input
                     value={query}
@@ -44,11 +44,11 @@ const Searchbar = () => {
                     ></i>
                 )}
             </div>
-            <div className="w-96 max-h-72 bg-zinc-800 absolute top-[100%] text-white overflow-auto rounded">
+            <div className="w-96 max-h-72 bg-zinc-800/70 absolute top-[100%] text-white overflow-auto rounded backdrop-blur-xl">
                 {search.map((result) => (
                     <Link
                         key={result.id}
-                        className="p-4 w-full flex justify-start items-center border-b-2 border-zinc-500 text-zinc-200 font-semibold hover:bg-zinc-700 hover:text-zinc-100 duration-100 gap-5"
+                        className="p-4 w-full flex justify-start items-center border-b-2 border-zinc-600 text-zinc-200 font-semibold hover:bg-zinc-700/50 hover:text-zinc-100 duration-100 gap-5"
                     >
                         <img
                             src={
