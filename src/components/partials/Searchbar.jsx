@@ -22,8 +22,8 @@ const Searchbar = () => {
     }, [query]);
 
     return (
-        <div className="relative flex justify-end items-center px-4 ">
-            <div className="w-64 border-b-2 border-zinc-400 min-w-56 duration-100 px-2">
+        <div className="relative flex justify-end items-center">
+            <div className="w-64 border-b-2 border-zinc-400 min-w-48 duration-100 px-2">
                 <label htmlFor="search">
                     <i className="text-zinc-200 ri-search-line text-xl"></i>
                 </label>
@@ -44,7 +44,7 @@ const Searchbar = () => {
                     ></i>
                 )}
             </div>
-            <div className="w-96 max-h-72 bg-zinc-800/70 absolute top-[100%] text-white overflow-auto rounded backdrop-blur-xl">
+            <div className="min-w-96 max-h-72 bg-zinc-800/95 absolute top-[100%] text-white overflow-auto rounded backdrop-blur-xl z-50">
                 {search.map((result) => (
                     <Link
                         key={result.id}
