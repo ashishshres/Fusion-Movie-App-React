@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from "./components/partials/Navbar";
 import Home from "./components/Home";
 
 const App = () => {
