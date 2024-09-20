@@ -1,10 +1,10 @@
 import React from "react";
-import Home from "./components/Home";
+import Routing from "./utils/Routing";
 
 const App = () => {
     return (
         <div className="min-h-screen bg-[#0e0e10]">
-            <Home />
+            <Routing />
         </div>
     );
 };
