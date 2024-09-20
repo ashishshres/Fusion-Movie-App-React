@@ -5,6 +5,7 @@
 ::-webkit-scrollbar {
     width: 0.5rem;
     height: 0.5rem;
+    background: #111;
 }
 
 ::-webkit-scrollbar-thumb {
