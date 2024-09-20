@@ -5,7 +5,7 @@ import Header from "./partials/Header";
 import TrendingCards from "./partials/TrendingCards";
 import PopularCards from "./partials/PopularCards";
 import TopRatedCards from "./partials/TopRatedCards";
-import loading from "../../public/loading.mp4";
+import Loader from "./Loader";
 
 const Home = () => {
     document.title = "Fusion | Home";
@@ -74,7 +74,8 @@ const Home = () => {
             <TopRatedCards data={topRated} />
         </div>
     ) : (
-        <h1 className="text-4xl font-bold text-zinc-100">Loading</h1>
+        // <h1 className="text-4xl font-bold text-zinc-100">Loading</h1>
+        <Loader />
     );
 };
 
