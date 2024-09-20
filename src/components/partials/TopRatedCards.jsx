@@ -7,7 +7,7 @@ const TopRatedCards = ({ data }) => {
             <h1 className="text-zinc-200 font-bold text-2xl mb-4">TopRated</h1>
             <div className="w-full h-72 flex overflow-x-auto gap-3 scrollbar-hide">
                 {data.map((topRated) => (
-                    <div
+                    <Link
                         style={{
                             background: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url(
                     https://image.tmdb.org/t/p/original/${
@@ -18,7 +18,7 @@ const TopRatedCards = ({ data }) => {
                             backgroundSize: "cover",
                         }}
                         key={topRated.id}
-                        className="min-w-56 p-4 rounded-md flex flex-col justify-end gap-1 shadow-md"
+                        className="min-w-56 p-4 rounded-md flex flex-col justify-end gap-1 shadow-md hover:scale-[.98] duration-200"
                     >
                         <h1 className="text-xl font-bold text-zinc-200">
                             {topRated.original_title ||
@@ -32,7 +32,7 @@ const TopRatedCards = ({ data }) => {
                                 more
                             </Link>
                         </p>
-                    </div>
+                    </Link>
                 ))}
             </div>
         </div>
