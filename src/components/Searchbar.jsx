@@ -1,7 +1,7 @@
-import axios from "../../utils/Axios";
+import axios from "../utils/Axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import noimage from "../../../public/no-image.jpg";
+import noimage from "/no-image.jpg";
 
 const Searchbar = () => {
     const [query, setQuery] = useState("");

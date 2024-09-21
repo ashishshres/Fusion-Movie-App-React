@@ -2,16 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Card from "./Card";
 
-const TrendingCards = ({ data }) => {
+const PlayingCards = ({ data }) => {
     return (
         <div className="w-full p-8 overflow-hidden">
-            <h1 className="text-zinc-200 font-bold text-2xl mb-4">Trending</h1>
+            <h1 className="text-zinc-200 font-bold text-2xl mb-4">
+                Now Playing
+            </h1>
             <div className="w-full h-72 flex overflow-x-auto gap-3 scrollbar-hide">
-                {data.map((trending) => (
-                    <Card key={trending.id} data={trending} />
+                {data.map((movie) => (
+                    <Card key={movie.id} data={movie} />
                 ))}
                 <Link
-                    to={"/trending"}
+                    to={"/movie"}
                     className="text-zinc-100 rounded-md text-xl font-medium h-full min-w-56 p-4 flex gap-2 items-center justify-center hover:scale-[.98] duration-200"
                     style={{
                         background: `linear-gradient(
@@ -21,7 +23,7 @@ const TrendingCards = ({ data }) => {
                                     )`,
                     }}
                 >
-                    <i class="ri-compass-fill text-3xl"></i>
+                    <i className="ri-compass-fill text-3xl"></i>
                     <h1>Discover More</h1>
                 </Link>
             </div>
@@ -29,4 +31,4 @@ const TrendingCards = ({ data }) => {
     );
 };
 
-export default TrendingCards;
+export default PlayingCards;

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "./partials/Navbar";
-import Dropdown from "./partials/Dropdown";
+import Navbar from "../components/Navbar";
+import Dropdown from "../components/Dropdown";
 import axios from "../utils/Axios";
-import Cards from "./partials/Cards";
-import Loader from "./Loader";
+import Cards from "../components/Cards";
+import Loader from "../components/Loader";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 const People = () => {

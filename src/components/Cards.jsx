@@ -31,7 +31,7 @@ const Cards = ({ data }) => {
                         </h1>
                         {item.vote_average && (
                             <div className="flex gap-1">
-                                <i class="ri-star-s-fill text-orange-400"></i>
+                                <i className="ri-star-s-fill text-orange-400"></i>
                                 <h2 className="text-zinc-400 font-medium">
                                     {(item.vote_average * 10).toFixed()}
                                 </h2>

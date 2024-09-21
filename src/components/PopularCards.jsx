@@ -8,7 +8,7 @@ const PopularCards = ({ data }) => {
             <h1 className="text-zinc-200 font-bold text-2xl mb-4">Popular</h1>
             <div className="w-full h-72 flex overflow-x-auto gap-3 scrollbar-hide">
                 {data.map((popular) => (
-                    <Card data={popular} />
+                    <Card key={popular.id} data={popular} />
                 ))}
                 <Link
                     to={"/popular"}
@@ -21,7 +21,7 @@ const PopularCards = ({ data }) => {
                                     )`,
                     }}
                 >
-                    <i class="ri-compass-fill text-3xl"></i>
+                    <i className="ri-compass-fill text-3xl"></i>
                     <h1>Discover More</h1>
                 </Link>
             </div>

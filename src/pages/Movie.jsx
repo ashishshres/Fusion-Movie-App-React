@@ -1,26 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "./partials/Navbar";
-import Dropdown from "./partials/Dropdown";
+import Navbar from "../components/Navbar";
+import Dropdown from "../components/Dropdown";
 import axios from "../utils/Axios";
-import Cards from "./partials/Cards";
-import Loader from "./Loader";
+import Cards from "../components/Cards";
+import Loader from "../components/Loader";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-const Show = () => {
-    document.title = "Fusion | TV Shows";
+const Movie = () => {
+    document.title = "Fusion | Movies";
 
     const navigate = useNavigate();
-    const [category, setCategory] = useState("airing_today");
-    const [show, setShow] = useState([]);
+    const [category, setCategory] = useState("now_playing");
+    const [movie, setMovie] = useState([]);
     const [page, setPage] = useState(1);
     const [hasMore, setHasMore] = useState(true);
 
-    const getShow = async () => {
+    const getMovie = async () => {
         try {
-            const { data } = await axios.get(`/tv/${category}?page=${page}`);
+            const { data } = await axios.get(`/movie/${category}?page=${page}`);
             if (data.results.length > 0) {
-                setShow((prev) => [...prev, ...data.results]);
+                setMovie((prev) => [...prev, ...data.results]);
                 console.log(data);
                 setPage(page + 1);
             } else {
@@ -32,12 +32,12 @@ const Show = () => {
     };
 
     const refreshHandler = () => {
-        if (show.length === 0) {
-            getShow();
+        if (movie.length === 0) {
+            getMovie();
         } else {
             setPage(1);
-            setShow([]);
-            getShow();
+            setMovie([]);
+            getMovie();
         }
     };
 
@@ -45,7 +45,7 @@ const Show = () => {
         refreshHandler();
     }, [category]);
 
-    return show.length > 0 ? (
+    return movie.length > 0 ? (
         <div className="w-full h-full ">
             <Navbar />
             <div className="w-full p-8 flex justify-between items-center ">
@@ -54,16 +54,16 @@ const Show = () => {
                         onClick={() => navigate("/")}
                         className="ri-arrow-left-line text-zinc-300 text-2xl mr-3"
                     ></i>
-                    <span>TV Shows</span>
+                    <span>Movies</span>
                 </h1>
                 <div className="flex gap-2">
                     <Dropdown
                         title={"Category"}
                         options={[
-                            "On_The_Air",
                             "Popular",
                             "Top_Rated",
-                            "Airing_Today",
+                            "Upcoming",
+                            "Now_Playing",
                         ]}
                         func={setCategory}
                     />
@@ -71,11 +71,11 @@ const Show = () => {
             </div>
 
             <InfiniteScroll
-                dataLength={show.length}
-                next={getShow}
+                dataLength={movie.length}
+                next={getMovie}
                 hasMore={hasMore}
             >
-                <Cards data={show} />
+                <Cards data={movie} />
             </InfiniteScroll>
         </div>
     ) : (
@@ -83,4 +83,4 @@ const Show = () => {
     );
 };
 
-export default Show;
+export default Movie;

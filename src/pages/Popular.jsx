@@ -1,26 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "./partials/Navbar";
-import Dropdown from "./partials/Dropdown";
+import Navbar from "../components/Navbar";
+import Dropdown from "../components/Dropdown";
 import axios from "../utils/Axios";
-import Cards from "./partials/Cards";
-import Loader from "./Loader";
+import Cards from "../components/Cards";
+import Loader from "../components/Loader";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-const Movie = () => {
-    document.title = "Fusion | Movies";
+const Popular = () => {
+    document.title = "Fusion | Popular";
 
     const navigate = useNavigate();
-    const [category, setCategory] = useState("now_playing");
-    const [movie, setMovie] = useState([]);
+    const [category, setCategory] = useState("movie");
+    const [popular, setPopular] = useState([]);
     const [page, setPage] = useState(1);
     const [hasMore, setHasMore] = useState(true);
 
-    const getMovie = async () => {
+    const getPopular = async () => {
         try {
-            const { data } = await axios.get(`/movie/${category}?page=${page}`);
+            const { data } = await axios.get(
+                `/${category}/popular?page=${page}`
+            );
             if (data.results.length > 0) {
-                setMovie((prev) => [...prev, ...data.results]);
+                setPopular((prev) => [...prev, ...data.results]);
                 console.log(data);
                 setPage(page + 1);
             } else {
@@ -32,12 +34,12 @@ const Movie = () => {
     };
 
     const refreshHandler = () => {
-        if (movie.length === 0) {
-            getMovie();
+        if (popular.length === 0) {
+            getPopular();
         } else {
             setPage(1);
-            setMovie([]);
-            getMovie();
+            setPopular([]);
+            getPopular();
         }
     };
 
@@ -45,7 +47,7 @@ const Movie = () => {
         refreshHandler();
     }, [category]);
 
-    return movie.length > 0 ? (
+    return popular.length > 0 ? (
         <div className="w-full h-full ">
             <Navbar />
             <div className="w-full p-8 flex justify-between items-center ">
@@ -54,28 +56,23 @@ const Movie = () => {
                         onClick={() => navigate("/")}
                         className="ri-arrow-left-line text-zinc-300 text-2xl mr-3"
                     ></i>
-                    <span>Movies</span>
+                    <span>Popular</span>
                 </h1>
                 <div className="flex gap-2">
                     <Dropdown
                         title={"Category"}
-                        options={[
-                            "Popular",
-                            "Top_Rated",
-                            "Upcoming",
-                            "Now_Playing",
-                        ]}
+                        options={["TV", "Movie"]}
                         func={setCategory}
                     />
                 </div>
             </div>
 
             <InfiniteScroll
-                dataLength={movie.length}
-                next={getMovie}
+                dataLength={popular.length}
+                next={getPopular}
                 hasMore={hasMore}
             >
-                <Cards data={movie} />
+                <Cards data={popular} />
             </InfiniteScroll>
         </div>
     ) : (
@@ -83,4 +80,4 @@ const Movie = () => {
     );
 };
 
-export default Movie;
+export default Popular;

@@ -1,11 +1,11 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Home from "../components/Home";
-import Trending from "../components/Trending";
-import Popular from "../components/Popular";
-import Movie from "../components/Movie";
-import Show from "../components/Show";
-import People from "../components/People";
+import Home from "../pages/Home";
+import Trending from "../pages/Trending";
+import Popular from "../pages/Popular";
+import Movie from "../pages/Movie";
+import Show from "../pages/Show";
+import People from "../pages/People";
 
 const Routing = () => {
     return (

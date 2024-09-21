@@ -26,16 +26,16 @@ const Header = ({ data }) => {
             </p>
             <p className="text-zinc-200 uppercase flex gap-4">
                 <span className="flex gap-1">
-                    <i class="ri-megaphone-fill"></i>
+                    <i className="ri-megaphone-fill"></i>
                     {data.release_date || "No Information"}
                 </span>
                 <span className="flex gap-1">
-                    <i class="ri-play-circle-fill"></i>
+                    <i className="ri-play-circle-fill"></i>
                     {data.media_type}
                 </span>
             </p>
             <Link className="bg-[#178cbe] px-4 py-2 rounded-md flex gap-2 items-center justify-center text-zinc-200 font-medium ">
-                <i class="ri-clapperboard-fill "></i>
+                <i className="ri-clapperboard-fill "></i>
                 <span>Watch Trailer</span>
             </Link>
         </div>

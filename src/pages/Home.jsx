@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "./partials/Navbar";
+import Navbar from "../components/Navbar";
 import axios from "../utils/Axios";
-import Header from "./partials/Header";
-import TrendingCards from "./partials/TrendingCards";
-import PopularCards from "./partials/PopularCards";
-import Loader from "./Loader";
-import PlayingCards from "./partials/PlayingCards";
-import ShowCards from "./partials/ShowCards";
-import Footer from "./partials/Footer";
+import Header from "../components/Header";
+import TrendingCards from "../components/TrendingCards";
+import PopularCards from "../components/PopularCards";
+import Loader from "../components/Loader";
+import PlayingCards from "../components/PlayingCards";
+import ShowCards from "../components/ShowCards";
+import Footer from "../components/Footer";
 
 const Home = () => {
     document.title = "Fusion | Home";

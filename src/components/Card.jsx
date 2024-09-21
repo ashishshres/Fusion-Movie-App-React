@@ -13,7 +13,6 @@ const Card = ({ data }) => {
                 backgroundPosition: "center",
                 backgroundSize: "cover",
             }}
-            key={data.id}
             className="min-w-56 p-4 rounded-md flex flex-col justify-end gap-1 shadow-md hover:scale-[.98] duration-200"
         >
             <h1 className="text-xl font-bold text-zinc-200">
@@ -28,7 +27,7 @@ const Card = ({ data }) => {
             </p>
             {data.vote_average && (
                 <div className="flex gap-1">
-                    <i class="ri-star-s-fill text-orange-400"></i>
+                    <i className="ri-star-s-fill text-orange-400"></i>
                     <h2 className="text-zinc-400 font-medium">
                         {(data.vote_average * 10).toFixed()}
                     </h2>
