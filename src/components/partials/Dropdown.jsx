@@ -64,7 +64,7 @@ const Dropdown = ({ title, options, func }) => {
                 <div
                     id="dropdown"
                     ref={dropdownRef}
-                    className="mt-1 divide-y divide-gray-100 rounded-lg shadow w-28 bg-zinc-700/50 backdrop-blur-md absolute"
+                    className="mt-1 divide-y divide-gray-100 rounded-lg shadow w-28 bg-zinc-700/50 backdrop-blur-md absolute z-[1]"
                 >
                     <ul
                         className="py-2 text-sm text-gray-200 font-medium"
