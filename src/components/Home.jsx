@@ -4,15 +4,18 @@ import axios from "../utils/Axios";
 import Header from "./partials/Header";
 import TrendingCards from "./partials/TrendingCards";
 import PopularCards from "./partials/PopularCards";
-import TopRatedCards from "./partials/TopRatedCards";
 import Loader from "./Loader";
+import PlayingCards from "./partials/PlayingCards";
+import ShowCards from "./partials/ShowCards";
+import Footer from "./partials/Footer";
 
 const Home = () => {
     document.title = "Fusion | Home";
     const [trendingBanner, setTrendingBanner] = useState(null);
     const [trending, setTrending] = useState(null);
     const [popular, setPopular] = useState(null);
-    const [topRated, setTopRated] = useState(null);
+    const [playing, setPlaying] = useState(null);
+    const [shows, setShows] = useState(null);
 
     const getTrendingBanner = async () => {
         try {
@@ -49,10 +52,19 @@ const Home = () => {
         }
     };
 
-    const getTopRated = async () => {
+    const getPlaying = async () => {
         try {
-            const { data } = await axios.get(`/movie/top_rated`);
-            setTopRated(data.results);
+            const { data } = await axios.get(`/movie/now_playing`);
+            setPlaying(data.results);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const getShows = async () => {
+        try {
+            const { data } = await axios.get(`/tv/airing_today`);
+            setShows(data.results);
         } catch (error) {
             console.log(error);
         }
@@ -62,16 +74,19 @@ const Home = () => {
         !trendingBanner && getTrendingBanner();
         !trending && getTrending();
         !popular && getPopular();
-        !topRated && getTopRated();
+        !playing && getPlaying();
+        !shows && getShows();
     }, []);
 
-    return trendingBanner && trending && popular && topRated ? (
+    return trendingBanner && trending && popular && playing && shows ? (
         <div className="w-full h-full">
             <Navbar />
             <Header data={trendingBanner} />
             <TrendingCards data={trending} />
             <PopularCards data={popular} />
-            <TopRatedCards data={topRated} />
+            <PlayingCards data={playing} />
+            <ShowCards data={shows} />
+            <Footer />
         </div>
     ) : (
         // <h1 className="text-4xl font-bold text-zinc-100">Loading</h1>
