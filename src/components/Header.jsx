@@ -22,7 +22,13 @@ const Header = ({ data }) => {
                     data.title}
             </h1>
             <p className="text-zinc-400 font-medium">
-                {data.overview.slice(0, 200)}... <Link>more</Link>
+                {data.overview.slice(0, 200)}...{" "}
+                <Link
+                    to={`/${data.media_type}/detail/${data.id}`}
+                    className="text-[#1897ce] font-medium"
+                >
+                    more
+                </Link>
             </p>
             <p className="text-zinc-200 uppercase flex gap-4">
                 <span className="flex gap-1">

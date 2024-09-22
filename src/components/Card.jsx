@@ -1,15 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import noimage from "/no-image.jpg"; // Ensure this path is correct
 
 const Card = ({ data }) => {
+    const imageUrl =
+        data.backdrop_path || data.profile_path
+            ? `https://image.tmdb.org/t/p/original/${
+                  data.backdrop_path || data.profile_path
+              }`
+            : noimage;
+
     return (
         <Link
+            to={`/${data.media_type || "movie" || "tv"}/detail/${data.id}`}
             style={{
-                background: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url(
-                    https://image.tmdb.org/t/p/original/${
-                        data.backdrop_path || data.profile_path
-                    }
-                )`,
+                background: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url(${imageUrl})`,
                 backgroundPosition: "center",
                 backgroundSize: "cover",
             }}
@@ -22,7 +27,7 @@ const Card = ({ data }) => {
                     data.title}
             </h1>
             <p className="text-zinc-400 font-medium leading-5 text-sm">
-                {data.overview.slice(0, 45)}...{" "}
+                {data.overview?.slice(0, 45)}...{" "}
                 <Link className="text-[#178cbe] text-sm font-medium">more</Link>
             </p>
             {data.vote_average && (

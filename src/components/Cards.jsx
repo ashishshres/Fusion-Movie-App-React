@@ -2,20 +2,22 @@ import React from "react";
 import LazyLoad from "react-lazyload";
 import { Link } from "react-router-dom";
 
-const Cards = ({ data }) => {
+const Cards = ({ data, title }) => {
+    console.log(title);
     return (
         // <div className="flex gap-4 p-8 flex-wrap">
         <div className="p-8 grid grid-cols-5 gap-3">
             {data.map((item) => (
                 <LazyLoad height={200} offset={100} key={item.id}>
                     <Link
+                        to={`/${item.media_type || title}/detail/${item.id}`}
                         style={{
                             background: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url(
                     https://image.tmdb.org/t/p/original/${
                         item.poster_path ||
                         item.backdrop_path ||
                         item.profile_path
-                    }
+                    } 
                 )`,
                             backgroundPosition: "center",
                             backgroundSize: "cover",

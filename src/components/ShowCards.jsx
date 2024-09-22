@@ -11,7 +11,7 @@ const ShowCards = ({ data }) => {
                     <Card key={movie.id} data={movie} />
                 ))}
                 <Link
-                    to={"/show"}
+                    to={"/tv"}
                     className="text-zinc-100 rounded-md text-xl font-medium h-full min-w-56 p-4 flex gap-2 items-center justify-center hover:scale-[.98] duration-200"
                     style={{
                         background: `linear-gradient(

@@ -47,6 +47,7 @@ const Searchbar = () => {
             <div className="min-w-96 max-h-72 bg-zinc-800/95 absolute top-[100%] text-white overflow-auto rounded backdrop-blur-xl z-50">
                 {search.map((result) => (
                     <Link
+                        to={`/${result.media_type}/detail/${result.id}`}
                         key={result.id}
                         className="p-4 w-full flex justify-start items-center border-b-2 border-zinc-600 text-zinc-200 font-semibold hover:bg-zinc-700/50 hover:text-zinc-100 duration-100 gap-5"
                     >
