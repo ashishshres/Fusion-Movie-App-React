@@ -54,7 +54,7 @@ const Trending = () => {
                 <h1 className="text-zinc-200 font-bold text-2xl">
                     <i
                         onClick={() => navigate("/")}
-                        className="ri-arrow-left-line text-zinc-300 text-2xl mr-3"
+                        className="ri-arrow-left-line text-zinc-300 text-2xl mr-3 cursor-pointer"
                     ></i>
                     <span>Trending</span>
                 </h1>
@@ -77,7 +77,7 @@ const Trending = () => {
                 next={getTrending}
                 hasMore={hasMore}
             >
-                <Cards data={trending} />
+                <Cards data={trending} title={category} />
             </InfiniteScroll>
         </div>
     ) : (

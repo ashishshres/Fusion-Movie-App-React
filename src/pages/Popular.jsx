@@ -50,11 +50,11 @@ const Popular = () => {
     return popular.length > 0 ? (
         <div className="w-full h-full ">
             <Navbar />
-            <div className="w-full p-8 flex justify-between items-center ">
+            <div className="w-full p-8 flex justify-between items-center">
                 <h1 className="text-zinc-200 font-bold text-2xl">
                     <i
                         onClick={() => navigate("/")}
-                        className="ri-arrow-left-line text-zinc-300 text-2xl mr-3"
+                        className="ri-arrow-left-line text-zinc-300 text-2xl mr-3 cursor-pointer"
                     ></i>
                     <span>Popular</span>
                 </h1>
@@ -72,7 +72,7 @@ const Popular = () => {
                 next={getPopular}
                 hasMore={hasMore}
             >
-                <Cards data={popular} />
+                <Cards data={popular} title={category} />
             </InfiniteScroll>
         </div>
     ) : (

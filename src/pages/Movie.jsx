@@ -52,7 +52,7 @@ const Movie = () => {
                 <h1 className="text-zinc-200 font-bold text-2xl">
                     <i
                         onClick={() => navigate("/")}
-                        className="ri-arrow-left-line text-zinc-300 text-2xl mr-3"
+                        className="ri-arrow-left-line text-zinc-300 text-2xl mr-3 cursor-pointer"
                     ></i>
                     <span>Movies</span>
                 </h1>
@@ -75,7 +75,7 @@ const Movie = () => {
                 next={getMovie}
                 hasMore={hasMore}
             >
-                <Cards data={movie} />
+                <Cards data={movie} title="movie" />
             </InfiniteScroll>
         </div>
     ) : (
