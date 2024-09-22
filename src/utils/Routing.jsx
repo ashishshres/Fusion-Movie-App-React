@@ -6,6 +6,11 @@ import Popular from "../pages/Popular";
 import Movie from "../pages/Movie";
 import Show from "../pages/Show";
 import People from "../pages/People";
+import MovieDetail from "../pages/MovieDetail";
+import ShowDetail from "../pages/ShowDetail";
+import PeopleDetail from "../pages/PeopleDetail";
+import Trailer from "../components/Trailer";
+import NotFound from "../components/NotFound";
 
 const Routing = () => {
     return (
@@ -14,8 +19,16 @@ const Routing = () => {
             <Route path="/trending" element={<Trending />} />
             <Route path="/popular" element={<Popular />} />
             <Route path="/movie" element={<Movie />} />
-            <Route path="/show" element={<Show />} />
+            <Route path="/movie/detail/:id" element={<MovieDetail />}>
+                <Route path="/movie/detail/:id/trailer" element={<Trailer />} />
+            </Route>
+            <Route path="/tv" element={<Show />} />
+            <Route path="/tv/detail/:id" element={<ShowDetail />}>
+                <Route path="/tv/detail/:id/trailer" element={<Trailer />} />
+            </Route>
             <Route path="/people" element={<People />} />
+            <Route path="/people/detail/:id" element={<PeopleDetail />} />
+            <Route path="*" element={<NotFound />} />
         </Routes>
     );
 };
