@@ -6,7 +6,7 @@ const Cards = ({ data, title }) => {
     console.log(title);
     return (
         // <div className="flex gap-4 p-8 flex-wrap">
-        <div className="p-8 grid grid-cols-5 gap-3">
+        <div className="p-8 grid grid-cols-1 gap-3 md:grid-cols-4 lg:grid-cols-5">
             {data.map((item) => (
                 <LazyLoad height={200} offset={100} key={item.id}>
                     <Link
