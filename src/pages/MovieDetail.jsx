@@ -5,7 +5,7 @@ import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Loader from "../components/Loader";
 import { Link } from "react-router-dom";
-import Card from "../components/Card";
+import CarouselCard from "../components/CarouselCard";
 
 const MovieDetail = () => {
     const { pathname } = useLocation();
@@ -131,37 +131,21 @@ const MovieDetail = () => {
                     </div>
                 </div>
             </div>
-            <div className="w-full p-8 overflow-hidden">
-                <h1 className="text-zinc-200 font-bold text-2xl mb-4">
-                    Recommendations
-                </h1>
-                <div className="w-full h-72 flex overflow-x-auto gap-3 scrollbar-hide">
-                    {info.recommendations.length > 0
-                        ? info.recommendations.map((recommendation) => (
-                              <Card
-                                  key={recommendation.id}
-                                  data={recommendation}
-                              />
-                          ))
-                        : info.similar.map((similar) => (
-                              <Card key={similar.id} data={similar} />
-                          ))}
-                    <Link
-                        to={"/tv"}
-                        className="text-zinc-100 rounded-md text-xl font-medium h-full min-w-56 p-4 flex gap-2 items-center justify-center hover:scale-[.98] duration-200"
-                        style={{
-                            background: `linear-gradient(
-                                    rgba(23, 140, 190, 0.4),
-                                    rgba(23, 140, 190, 0.6),
-                                    rgba(23, 140, 190, 0.8)
-                                    )`,
-                        }}
-                    >
-                        <i className="ri-compass-fill text-3xl"></i>
-                        <h1>Discover More</h1>
-                    </Link>
-                </div>
-            </div>
+
+            {info.recommendations.length > 0 ? (
+                <CarouselCard
+                    data={info.recommendations}
+                    title="Recommendations"
+                    path="movie"
+                />
+            ) : (
+                <CarouselCard
+                    data={info.similar}
+                    title="Recommendations"
+                    path="movie"
+                />
+            )}
+
             <Outlet />
         </div>
     ) : (

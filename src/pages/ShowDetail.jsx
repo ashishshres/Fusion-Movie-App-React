@@ -5,8 +5,8 @@ import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Loader from "../components/Loader";
 import { Link } from "react-router-dom";
-import Card from "../components/Card";
 import { removeShow } from "../app/reducers/showSlice";
+import CarouselCard from "../components/CarouselCard";
 
 const ShowDetail = () => {
     const { pathname } = useLocation();
@@ -133,34 +133,51 @@ const ShowDetail = () => {
             </div>
             <div className="w-full p-8 overflow-hidden">
                 <h1 className="text-zinc-200 font-bold text-2xl mb-4">
-                    Recommendations
+                    Seasons
                 </h1>
                 <div className="w-full h-72 flex overflow-x-auto gap-3 scrollbar-hide">
-                    {info.recommendations.length > 0
-                        ? info.recommendations.map((recommendation) => (
-                              <Card
-                                  key={recommendation.id}
-                                  data={recommendation}
-                              />
-                          ))
-                        : info.similar.map((similar) => (
-                              <Card key={similar.id} data={similar} />
-                          ))}
-                    <Link
-                        to={"/tv"}
-                        className="text-zinc-100 rounded-md text-xl font-medium h-full min-w-56 p-4 flex gap-2 items-center justify-center hover:scale-[.98] duration-200"
-                        style={{
-                            background: `linear-gradient(
-                                    rgba(23, 140, 190, 0.4),
-                                    rgba(23, 140, 190, 0.6),
-                                    rgba(23, 140, 190, 0.8)
-                                    )`,
-                        }}
-                    >
-                        <i className="ri-compass-fill text-3xl"></i>
-                        <h1>Discover More</h1>
-                    </Link>
+                    {info.details.seasons.map((season) => (
+                        <Link
+                            style={{
+                                background: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url(https://image.tmdb.org/t/p/original/${season.poster_path})`,
+                                backgroundPosition: "center",
+                                backgroundSize: "cover",
+                            }}
+                            className="min-w-56 p-4 rounded-md flex flex-col justify-end gap-1 shadow-md hover:scale-[.98] duration-200"
+                        >
+                            <h1 className="text-xl font-bold text-zinc-200">
+                                {season.original_title ||
+                                    season.name ||
+                                    season.original_name ||
+                                    season.title}
+                            </h1>
+
+                            {season.vote_average && (
+                                <div className="flex gap-1">
+                                    <i className="ri-star-s-fill text-orange-400"></i>
+                                    <h2 className="text-zinc-400 font-medium">
+                                        {(season.vote_average * 10).toFixed()}
+                                    </h2>
+                                </div>
+                            )}
+                        </Link>
+                    ))}
                 </div>
+            </div>
+            <div>
+                {info.recommendations.length > 0 ? (
+                    <CarouselCard
+                        data={info.recommendations}
+                        title="Recommendations"
+                        path="tv"
+                    />
+                ) : (
+                    <CarouselCard
+                        data={info.similar}
+                        title="Recommendations"
+                        path="tv"
+                    />
+                )}
             </div>
             <Outlet />
         </div>
