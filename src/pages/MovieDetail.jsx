@@ -6,6 +6,7 @@ import Navbar from "../components/Navbar";
 import Loader from "../components/Loader";
 import { Link } from "react-router-dom";
 import CarouselCard from "../components/CarouselCard";
+import Footer from "../components/Footer";
 
 const MovieDetail = () => {
     const { pathname } = useLocation();
@@ -147,6 +148,7 @@ const MovieDetail = () => {
             )}
 
             <Outlet />
+            <Footer />
         </div>
     ) : (
         <Loader />
