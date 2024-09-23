@@ -50,7 +50,7 @@ const Trending = () => {
     return trending.length > 0 ? (
         <div className="w-full h-full ">
             <Navbar />
-            <div className="w-full p-8 flex justify-between items-center ">
+            <div className="w-full p-8 flex justify-between items-center flex-wrap">
                 <h1 className="text-zinc-200 font-bold text-2xl">
                     <i
                         onClick={() => navigate("/")}

@@ -4,7 +4,7 @@ import Searchbar from "./Searchbar";
 
 const Navbar = () => {
     return (
-        <div className="bg-zinc-800/70 text-white shadow-sm px-8 py-5 flex justify-between items-center sticky top-0 left-0 backdrop-blur-xl flex-wrap z-30">
+        <div className="bg-zinc-800/70 text-white shadow-sm px-8 py-5 flex justify-between items-center sticky top-0 left-0 backdrop-blur-xl flex-wrap lg:flex-nowrap z-30">
             <Link to="/">
                 <h1 className="flex items-center gap-2 text-3xl font-bold">
                     <i className="ri-movie-2-fill text-3xl text-[#1DB2F4]"></i>
