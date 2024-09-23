@@ -7,6 +7,7 @@ import Loader from "../components/Loader";
 import { Link } from "react-router-dom";
 import { removeShow } from "../app/reducers/showSlice";
 import CarouselCard from "../components/CarouselCard";
+import Footer from "../components/Footer";
 
 const ShowDetail = () => {
     const { pathname } = useLocation();
@@ -74,7 +75,9 @@ const ShowDetail = () => {
                                             .join(", ")}
                                     </span>
                                     <span className="inline-block text-zinc-300 font-medium text-sm">
-                                        {info.details.runtime} mins
+                                        {info.details.seasons.length > 1
+                                            ? `${info.details.seasons.length} seasons`
+                                            : `${info.details.seasons.length} season`}
                                     </span>
                                 </div>
 
@@ -180,6 +183,7 @@ const ShowDetail = () => {
                 )}
             </div>
             <Outlet />
+            <Footer />
         </div>
     ) : (
         <Loader />
