@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import noimage from "/no-image.jpg"; // Ensure this path is correct
+import noimage from "/no-image.jpg";
 
 const Card = ({ data }) => {
     const imageUrl =
-        data.backdrop_path || data.profile_path
+        data.poster_path || data.backdrop_path || data.profile_path
             ? `https://image.tmdb.org/t/p/original/${
-                  data.backdrop_path || data.profile_path
+                  data.poster_path || data.backdrop_path || data.profile_path
               }`
             : noimage;
 
@@ -26,10 +26,7 @@ const Card = ({ data }) => {
                     data.original_name ||
                     data.title}
             </h1>
-            <p className="text-zinc-400 font-medium leading-5 text-sm">
-                {data.overview?.slice(0, 45)}...{" "}
-                <Link className="text-[#178cbe] text-sm font-medium">more</Link>
-            </p>
+
             {data.vote_average && (
                 <div className="flex gap-1">
                     <i className="ri-star-s-fill text-orange-400"></i>
