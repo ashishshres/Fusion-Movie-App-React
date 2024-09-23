@@ -2,12 +2,9 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import axios from "../utils/Axios";
 import Header from "../components/Header";
-import TrendingCards from "../components/TrendingCards";
-import PopularCards from "../components/PopularCards";
 import Loader from "../components/Loader";
-import PlayingCards from "../components/PlayingCards";
-import ShowCards from "../components/ShowCards";
 import Footer from "../components/Footer";
+import CarouselCard from "../components/CarouselCard";
 
 const Home = () => {
     document.title = "Fusion | Home";
@@ -79,17 +76,16 @@ const Home = () => {
     }, []);
 
     return trendingBanner && trending && popular && playing && shows ? (
-        <div className="w-full h-full">
+        <div className="w-full h-full overflow-hidden">
             <Navbar />
             <Header data={trendingBanner} />
-            <TrendingCards data={trending} />
-            <PopularCards data={popular} />
-            <PlayingCards data={playing} />
-            <ShowCards data={shows} />
+            <CarouselCard data={trending} title="Trending" path="trending" />
+            <CarouselCard data={popular} title="Popular" path="popular" />
+            <CarouselCard data={playing} title="Now Playing" path="movie" />
+            <CarouselCard data={shows} title="TV Shows" path="tv" />
             <Footer />
         </div>
     ) : (
-        // <h1 className="text-4xl font-bold text-zinc-100">Loading</h1>
         <Loader />
     );
 };
