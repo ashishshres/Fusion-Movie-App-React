@@ -40,7 +40,10 @@ const Header = ({ data }) => {
                     {data.media_type}
                 </span>
             </p>
-            <Link className="bg-[#178cbe] px-4 py-2 rounded-md flex gap-2 items-center justify-center text-zinc-200 font-medium ">
+            <Link
+                to={`/${data.media_type}/detail/${data.id}/trailer`}
+                className="bg-[#178cbe] px-4 py-2 rounded-md flex gap-2 items-center justify-center text-zinc-200 font-medium "
+            >
                 <i className="ri-clapperboard-fill "></i>
                 <span>Watch Trailer</span>
             </Link>
