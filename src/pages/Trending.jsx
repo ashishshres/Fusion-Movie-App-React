@@ -23,7 +23,6 @@ const Trending = () => {
             );
             if (data.results.length > 0) {
                 setTrending((prev) => [...prev, ...data.results]);
-                console.log(data);
                 setPage(page + 1);
             } else {
                 setHasMore(false);

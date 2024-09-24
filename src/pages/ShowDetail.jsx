@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { removeShow } from "../app/reducers/showSlice";
 import CarouselCard from "../components/CarouselCard";
 import Footer from "../components/Footer";
+import noimage from "/no-image.jpg";
 
 const ShowDetail = () => {
     const { pathname } = useLocation();
@@ -48,10 +49,15 @@ const ShowDetail = () => {
                     <div className="relative z-10 flex gap-6 items-end">
                         <img
                             className="w-64 h-[360px] object-cover rounded-md shadow-lg border-2 border-zinc-600"
-                            src={`https://image.tmdb.org/t/p/original/${
+                            src={
                                 info.details.poster_path ||
                                 info.details.backdrop_path
-                            }`}
+                                    ? `https://image.tmdb.org/t/p/original/${
+                                          info.details.poster_path ||
+                                          info.details.backdrop_path
+                                      }`
+                                    : noimage
+                            }
                             alt=""
                         />
                         <div>
@@ -141,11 +147,19 @@ const ShowDetail = () => {
                 <div className="w-full h-72 flex overflow-x-auto gap-3 scrollbar-hide">
                     {info.details.seasons.map((season) => (
                         <Link
-                            style={{
-                                background: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url(https://image.tmdb.org/t/p/original/${season.poster_path})`,
-                                backgroundPosition: "center",
-                                backgroundSize: "cover",
-                            }}
+                            style={
+                                season.poster_path
+                                    ? {
+                                          background: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url(https://image.tmdb.org/t/p/original/${season.poster_path})`,
+                                          backgroundPosition: "center",
+                                          backgroundSize: "cover",
+                                      }
+                                    : {
+                                          background: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url(${noimage})`,
+                                          backgroundPosition: "center",
+                                          backgroundSize: "cover",
+                                      }
+                            }
                             className="min-w-56 p-4 rounded-md flex flex-col justify-end gap-1 shadow-md hover:scale-[.98] duration-200"
                         >
                             <h1 className="text-xl font-bold text-zinc-200">
