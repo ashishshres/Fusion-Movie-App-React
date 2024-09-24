@@ -3,9 +3,7 @@ import LazyLoad from "react-lazyload";
 import { Link } from "react-router-dom";
 
 const Cards = ({ data, title }) => {
-    console.log(title);
     return (
-        // <div className="flex gap-4 p-8 flex-wrap">
         <div className="p-8 grid grid-cols-1 gap-3 md:grid-cols-4 lg:grid-cols-5">
             {data.map((item) => (
                 <LazyLoad height={200} offset={100} key={item.id}>
@@ -22,7 +20,6 @@ const Cards = ({ data, title }) => {
                             backgroundPosition: "center",
                             backgroundSize: "cover",
                         }}
-                        // className="max-w-[202px] h-72 p-4 rounded-md flex flex-col justify-end gap-1 shadow-md"
                         className="p-4 h-80 rounded-md flex flex-col justify-end gap-1 shadow-md hover:scale-[.98] duration-200"
                     >
                         <h1 className="text-xl font-bold text-zinc-200">
