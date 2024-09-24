@@ -23,7 +23,6 @@ const Popular = () => {
             );
             if (data.results.length > 0) {
                 setPopular((prev) => [...prev, ...data.results]);
-                console.log(data);
                 setPage(page + 1);
             } else {
                 setHasMore(false);

@@ -23,7 +23,6 @@ const People = () => {
             );
             if (data.results.length > 0) {
                 setPeople((prev) => [...prev, ...data.results]);
-                console.log(data);
                 setPage(page + 1);
             } else {
                 setHasMore(false);
@@ -65,7 +64,7 @@ const People = () => {
                 next={getPeople}
                 hasMore={hasMore}
             >
-                <Cards data={people} title="people" />
+                <Cards data={people} title="person" />
             </InfiniteScroll>
         </div>
     ) : (

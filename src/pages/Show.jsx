@@ -21,7 +21,6 @@ const Show = () => {
             const { data } = await axios.get(`/tv/${category}?page=${page}`);
             if (data.results.length > 0) {
                 setShow((prev) => [...prev, ...data.results]);
-                console.log(data);
                 setPage(page + 1);
             } else {
                 setHasMore(false);

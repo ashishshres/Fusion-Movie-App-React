@@ -7,12 +7,12 @@ import Loader from "../components/Loader";
 import { Link } from "react-router-dom";
 import CarouselCard from "../components/CarouselCard";
 import Footer from "../components/Footer";
+import noimage from "../../public/no-image.jpg";
 
 const MovieDetail = () => {
     const { pathname } = useLocation();
     const { id } = useParams();
     const { info } = useSelector((state) => state.movie);
-    console.log(info);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -48,10 +48,15 @@ const MovieDetail = () => {
                     <div className="relative z-10 flex gap-6 items-end">
                         <img
                             className="w-64 h-[360px] object-cover rounded-md shadow-lg border-2 border-zinc-600"
-                            src={`https://image.tmdb.org/t/p/original/${
+                            src={
                                 info.details.poster_path ||
                                 info.details.backdrop_path
-                            }`}
+                                    ? `https://image.tmdb.org/t/p/original/${
+                                          info.details.poster_path ||
+                                          info.details.backdrop_path
+                                      }`
+                                    : noimage
+                            }
                             alt=""
                         />
                         <div>

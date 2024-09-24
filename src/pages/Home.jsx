@@ -22,7 +22,6 @@ const Home = () => {
             const chooseBanner =
                 data.results[(Math.random() * data.results.length).toFixed()];
 
-            console.log(chooseBanner);
             setTrendingBanner(chooseBanner);
         } catch (error) {
             console.log(error);
