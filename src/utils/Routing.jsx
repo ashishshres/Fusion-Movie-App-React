@@ -27,7 +27,7 @@ const Routing = () => {
                 <Route path="/tv/detail/:id/trailer" element={<Trailer />} />
             </Route>
             <Route path="/people" element={<People />} />
-            <Route path="/people/detail/:id" element={<PeopleDetail />} />
+            <Route path="/person/detail/:id" element={<PeopleDetail />} />
             <Route path="*" element={<NotFound />} />
         </Routes>
     );
