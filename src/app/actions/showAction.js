@@ -21,7 +21,6 @@ export const asyncLoadShow = (id) => async (dispatch) => {
             watchProviders: watchProviders.data.results.IN,
             translations: translations.data.translations,
         };
-        console.log(data);
         dispatch(loadShow(data));
     } catch (error) {
         console.log(error);

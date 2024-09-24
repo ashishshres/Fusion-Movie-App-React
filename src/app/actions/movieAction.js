@@ -21,7 +21,6 @@ export const asyncLoadMovie = (id) => async (dispatch) => {
             watchProviders: watchProviders.data.results.IN,
             translations: translations.data.translations,
         };
-        console.log(data);
         dispatch(loadMovie(data));
     } catch (error) {
         console.log(error);
