@@ -28,13 +28,15 @@ const ShowDetail = () => {
         <div>
             <Navbar />
             <div className="w-full h-full relative">
-                <h1 className="p-8 absolute top-0 left-0 z-10">
+                {/* Ensure the back button has a higher z-index */}
+                <h1 className="absolute top-0 left-0 p-4 sm:p-8 z-50">
                     <i
                         onClick={() => navigate(-1)}
                         className="ri-arrow-left-line text-zinc-300 text-2xl mr-3 cursor-pointer"
                     ></i>
                 </h1>
-                <div className="w-full h-[75vh] justify-end items-start flex flex-col p-8 gap-3 relative overflow-hidden">
+                {/* Rest of the component */}
+                <div className="w-full min-h-[70vh] sm:min-h-[75vh] justify-end items-start flex flex-col p-4 sm:p-8 gap-3 relative overflow-hidden">
                     <div
                         className="absolute inset-0"
                         style={{
@@ -46,9 +48,9 @@ const ShowDetail = () => {
                         }}
                     ></div>
 
-                    <div className="relative z-10 flex gap-6 items-end">
+                    <div className="relative flex flex-col md:flex-row gap-6 items-center md:items-end text-center md:text-left z-10">
                         <img
-                            className="w-64 h-[360px] object-cover rounded-md shadow-lg border-2 border-zinc-600"
+                            className="w-44 h-[260px] sm:w-64 sm:h-[360px] object-cover rounded-md shadow-lg border-2 border-zinc-600"
                             src={
                                 info.details.poster_path ||
                                 info.details.backdrop_path
@@ -61,7 +63,7 @@ const ShowDetail = () => {
                             alt=""
                         />
                         <div>
-                            <div className="flex flex-col gap-2">
+                            <div className="flex flex-col gap-2 items-center md:items-start">
                                 <div>
                                     <h1 className="text-4xl font-black text-zinc-200">
                                         {info.details.name ||
@@ -74,7 +76,7 @@ const ShowDetail = () => {
                                     </h2>
                                 </div>
 
-                                <div className="flex gap-4 items-center">
+                                <div className="flex gap-4 items-center flex-col md:flex-row">
                                     <span className="inline-block text-zinc-200 text-sm">
                                         {info.details.genres
                                             .map((genre) => genre.name)

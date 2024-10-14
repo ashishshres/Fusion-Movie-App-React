@@ -12,17 +12,17 @@ const Trailer = () => {
 
     return (
         <div className="absolute w-full h-full flex items-center justify-center top-0 left-0 z-50 bg-zinc-950/95">
-            <h1 className="p-8 absolute top-0 right-0 z-10">
+            <h1 className="p-4 sm:p-8 absolute top-0 right-0 z-10">
                 <i
                     onClick={() => navigate(-1)}
-                    className="ri-close-fill text-zinc-300 text-2xl mr-3 cursor-pointer"
+                    className="ri-close-fill text-zinc-300 text-2xl sm:text-3xl mr-3 cursor-pointer"
                 ></i>
             </h1>
             {video ? (
                 <ReactPlayer
                     controls
-                    height={500}
-                    width={1000}
+                    width="90vw" // 90% of viewport width
+                    height="75vh" // 50% of viewport height
                     url={`https://www.youtube.com/watch?v=${video.key}`}
                 />
             ) : (

@@ -27,13 +27,15 @@ const MovieDetail = () => {
         <div>
             <Navbar />
             <div className="w-full h-full relative">
-                <h1 className="p-8 absolute top-0 left-0 z-10">
+                <h1 className="absolute top-0 left-0 p-4 sm:p-8 z-50">
                     <i
                         onClick={() => navigate(-1)}
-                        className="ri-arrow-left-line text-zinc-300 text-2xl mr-3 cursor-pointer"
+                        className="ri-arrow-left-line text-zinc-300 text-xl sm:text-2xl mr-3 cursor-pointer"
                     ></i>
                 </h1>
-                <div className="w-full h-[75vh] justify-end items-start flex flex-col p-8 gap-3 relative overflow-hidden">
+
+                {/* Make the height fluid and responsive */}
+                <div className="w-full min-h-[70vh] sm:min-h-[75vh] justify-end items-start flex flex-col p-4 sm:p-8 gap-3 relative overflow-hidden">
                     <div
                         className="absolute inset-0"
                         style={{
@@ -45,9 +47,10 @@ const MovieDetail = () => {
                         }}
                     ></div>
 
-                    <div className="relative z-10 flex gap-6 items-end">
+                    {/* Make flex-col for small screens, and flex-row for larger ones */}
+                    <div className="relative z-10 flex flex-col md:flex-row gap-6 items-center md:items-end text-center md:text-left">
                         <img
-                            className="w-64 h-[360px] object-cover rounded-md shadow-lg border-2 border-zinc-600"
+                            className="w-44 h-[260px] sm:w-64 sm:h-[360px] object-cover rounded-md shadow-lg border-2 border-zinc-600"
                             src={
                                 info.details.poster_path ||
                                 info.details.backdrop_path
@@ -57,29 +60,32 @@ const MovieDetail = () => {
                                       }`
                                     : noimage
                             }
-                            alt=""
+                            alt="Movie Poster"
                         />
+
                         <div>
-                            <div className="flex flex-col gap-2">
+                            <div className="flex flex-col gap-2 items-center md:items-start">
                                 <div>
-                                    <h1 className="text-4xl font-black text-zinc-200">
+                                    {/* Text size should adjust for small screens */}
+                                    <h1 className="text-2xl sm:text-4xl font-black text-zinc-200">
                                         {info.details.name ||
                                             info.details.title ||
                                             info.details.original_name ||
                                             info.details.original_title}
                                     </h1>
-                                    <h2 className="text-zinc-400 font-bold">
+                                    <h2 className="text-sm sm:text-base text-zinc-400 font-bold">
                                         {info.details.tagline}
                                     </h2>
                                 </div>
 
-                                <div className="flex gap-4 items-center">
-                                    <span className="inline-block text-zinc-200 text-sm">
+                                {/* Responsive flex layout */}
+                                <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 items-center">
+                                    <span className="inline-block text-zinc-200 text-xs sm:text-sm">
                                         {info.details.genres
                                             .map((genre) => genre.name)
                                             .join(", ")}
                                     </span>
-                                    <span className="inline-block text-zinc-300 font-medium text-sm">
+                                    <span className="inline-block text-zinc-300 font-medium text-xs sm:text-sm">
                                         {info.details.runtime} mins
                                     </span>
                                 </div>
@@ -104,19 +110,21 @@ const MovieDetail = () => {
                                         </div>
                                     )}
                                 </div>
+
                                 <div className="mt-1">
                                     <h2 className="text-zinc-200 font-medium">
                                         Overview
                                     </h2>
-                                    <p className="text-zinc-400 leading-5">
+                                    <p className="text-zinc-400 text-sm sm:text-base leading-5">
                                         {info.details.overview}
                                     </p>
                                 </div>
+
                                 <div className="mt-1">
                                     <h2 className="text-zinc-200 font-medium">
                                         Available In
                                     </h2>
-                                    <p className="text-zinc-400 leading-5 text-sm">
+                                    <p className="text-zinc-400 text-xs sm:text-sm leading-5">
                                         {info.translations
                                             .map(
                                                 (translation) =>
@@ -125,9 +133,10 @@ const MovieDetail = () => {
                                             .join(", ")}
                                     </p>
                                 </div>
+
                                 <Link
                                     to={`${pathname}/trailer`}
-                                    className="bg-[#178cbe] px-4 py-2 rounded-md flex gap-2 items-center justify-center text-zinc-200 font-medium w-max mt-1"
+                                    className="bg-[#178cbe] px-3 sm:px-4 py-2 rounded-md flex gap-2 items-center justify-center text-zinc-200 font-medium w-max mt-2 sm:mt-1"
                                 >
                                     <i className="ri-clapperboard-fill "></i>
                                     <span>Watch Trailer</span>

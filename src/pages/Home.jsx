@@ -75,13 +75,12 @@ const Home = () => {
     }, []);
 
     return trendingBanner && trending && popular && playing && shows ? (
-        <div className="w-full h-full overflow-hidden">
+        <div className="w-full h-full">
             <Navbar />
             <Header data={trendingBanner} />
             <CarouselCard data={trending} title="Trending" path="trending" />
             <CarouselCard data={popular} title="Popular" path="popular" />
             <CarouselCard data={playing} title="Now Playing" path="movie" />
-            <CarouselCard data={shows} title="TV Shows" path="tv" />
             <Footer />
         </div>
     ) : (

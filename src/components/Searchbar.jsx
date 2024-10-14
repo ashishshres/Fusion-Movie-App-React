@@ -22,7 +22,7 @@ const Searchbar = () => {
 
     return (
         <div className="relative flex justify-end items-center z-10">
-            <div className="w-64 border-b-2 border-zinc-400 min-w-48 duration-100 px-2">
+            <div className="flex items-center w-64 border-b-2 border-zinc-400 min-w-48 duration-100 px-2">
                 <label htmlFor="search">
                     <i className="text-zinc-200 ri-search-line text-xl"></i>
                 </label>
