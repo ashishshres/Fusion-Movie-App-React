@@ -11,8 +11,8 @@ const Trailer = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="absolute w-full h-full flex items-center justify-center top-0 left-0 z-50 bg-zinc-950/95">
-            <h1 className="p-4 sm:p-8 absolute top-0 right-0 z-10">
+        <div className="absolute w-full h-full flex items-center justify-center top-16 left-0 z-50 bg-zinc-950/95">
+            <h1 className="p-4 sm:p-8 absolute top-0 right-0 z-20">
                 <i
                     onClick={() => navigate(-1)}
                     className="ri-close-fill text-zinc-300 text-2xl sm:text-3xl mr-3 cursor-pointer"
